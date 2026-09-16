@@ -6,6 +6,7 @@ on:
     paths:
       - 'index.html'   # запускается только если менялась сама страница —
                         # коммит с новым PDF не вызовет повторный запуск
+  workflow_dispatch: {} # позволяет запустить вручную из вкладки Actions
 
 permissions:
   contents: write
