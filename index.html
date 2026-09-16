@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>20 промптов для контента блогера с ИИ — tannyff</title>
+<meta name="description" content="Бесплатный гайд: 20 готовых промптов для идей, сценариев Reels, подписей и общения с аудиторией.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0D0E12; --bg2:#111318; --bg3:#161A22;
+    --blue:#4D9FFF; --blue-dim:#2E5C8F;
+    --ink:#E8F0FF; --ink-soft:#9AA7BD; --ink-dim:#6B7688;
+    --line: rgba(232,240,255,.08);
+  }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    background:var(--bg); color:var(--ink); font-family:'Jost',sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{ color:inherit; }
+  .wrap{ max-width:760px; margin:0 auto; padding:0 28px; }
+
+  /* HERO */
+  .hero{
+    position:relative; overflow:hidden;
+    background:linear-gradient(160deg, var(--bg2) 0%, var(--bg) 70%);
+    padding:100px 0 90px;
+    border-bottom:1px solid var(--line);
+  }
+  .hero .grid-lines{
+    position:absolute; inset:0; opacity:.5;
+    background-image:
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size:56px 56px;
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 30%, transparent 75%);
+  }
+  .hero-inner{ position:relative; z-index:2; }
+  .eyebrow{
+    font-size:15px; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--blue); font-weight:600; margin-bottom:22px;
+  }
+  h1{
+    font-family:'PT Serif',serif; font-weight:700; font-size:44px; line-height:1.22;
+    max-width:600px; letter-spacing:-.01em;
+  }
+  h1 em{ font-style:italic; color:var(--blue); }
+  .lede{
+    font-size:19px; line-height:1.6; color:var(--ink-soft); max-width:520px;
+    margin-top:26px; font-weight:300;
+  }
+  .signature{
+    margin-top:40px; display:flex; align-items:center; gap:14px;
+    font-size:15px; color:var(--ink-dim);
+  }
+  .signature .dot{ width:6px; height:6px; border-radius:50%; background:var(--blue); }
+
+  /* HOW TO USE */
+  .howto{ padding:56px 0; border-bottom:1px solid var(--line); }
+  .howto p{ font-size:16px; line-height:1.7; color:var(--ink-soft); font-weight:300; max-width:600px; }
+  .howto p + p{ margin-top:14px; }
+
+  /* CATEGORY */
+  .category{ padding:64px 0; border-bottom:1px solid var(--line); }
+  .category:nth-child(even){ background:var(--bg3); }
+  .cat-head{ display:flex; align-items:baseline; gap:18px; margin-bottom:34px; }
+  .cat-num{
+    font-family:'JetBrains Mono',monospace; font-size:14px; color:var(--blue);
+    border:1px solid var(--blue-dim); border-radius:100px; padding:5px 14px;
+    flex-shrink:0;
+  }
+  .cat-title{ font-family:'PT Serif',serif; font-weight:700; font-size:26px; }
+  .cat-sub{ font-size:15px; color:var(--ink-dim); margin-top:8px; margin-bottom:0; font-weight:300; }
+
+  .prompt-card{
+    background:var(--bg2); border:1px solid var(--line); border-radius:14px;
+    padding:22px 24px; margin-bottom:14px;
+    display:flex; gap:18px; align-items:flex-start;
+    transition: border-color .2s ease;
+  }
+  .prompt-card:hover{ border-color: var(--blue-dim); }
+  .prompt-index{
+    font-family:'JetBrains Mono',monospace; font-size:14px; color:var(--ink-dim);
+    padding-top:2px; flex-shrink:0; width:24px;
+  }
+  .prompt-text{
+    font-family:'JetBrains Mono',monospace; font-size:15px; line-height:1.65;
+    color:var(--ink); flex:1;
+  }
+  .copy-btn{
+    flex-shrink:0; background:transparent; border:1px solid var(--line);
+    color:var(--ink-dim); font-family:'Jost',sans-serif; font-size:13px;
+    padding:8px 14px; border-radius:100px; cursor:pointer;
+    transition: all .15s ease; white-space:nowrap;
+  }
+  .copy-btn:hover{ border-color:var(--blue); color:var(--blue); }
+  .copy-btn.copied{ border-color:var(--blue); color:var(--blue); }
+
+  /* NEXT STEP */
+  .next{ padding:80px 0; text-align:left; }
+  .next-card{
+    background:linear-gradient(135deg, var(--bg2), var(--bg3));
+    border:1px solid var(--blue-dim); border-radius:20px;
+    padding:48px 40px;
+  }
+  .next-card h2{
+    font-family:'PT Serif',serif; font-size:30px; font-weight:700; line-height:1.3;
+    max-width:480px;
+  }
+  .next-card h2 em{ font-style:italic; color:var(--blue); }
+  .next-card p{ color:var(--ink-soft); font-size:16px; margin-top:18px; max-width:460px; line-height:1.6; font-weight:300; }
+  .cta-row{ margin-top:30px; display:flex; gap:14px; flex-wrap:wrap; }
+  .btn-primary{
+    display:inline-block; background:var(--blue); color:#0a0e14; font-weight:600;
+    font-size:16px; padding:15px 28px; border-radius:100px; text-decoration:none;
+  }
+  .btn-secondary{
+    display:inline-block; background:transparent; border:1px solid var(--line);
+    color:var(--ink-soft); font-weight:500; font-size:16px; padding:15px 28px;
+    border-radius:100px; text-decoration:none;
+  }
+
+  footer{ padding:40px 0 60px; border-top:1px solid var(--line); }
+  footer p{ font-size:14px; color:var(--ink-dim); }
+  footer a{ color:var(--blue); text-decoration:none; }
+
+  @media (max-width:640px){
+    h1{ font-size:32px; }
+    .hero{ padding:70px 0 60px; }
+    .prompt-card{ flex-direction:column; }
+    .copy-btn{ align-self:flex-start; }
+    .next-card{ padding:34px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="grid-lines"></div>
+  <div class="wrap hero-inner">
+    <div class="eyebrow">Бесплатный гайд</div>
+    <h1>20 промптов, которые заменят тебе <em>час раздумий</em> над контентом</h1>
+    <p class="lede">Не теория про нейросети — конкретные формулировки запросов, которые я использую сама: для идей, сценариев Reels, подписей и ответов аудитории.</p>
+    <div class="signature"><span class="dot"></span> Татьяна · tannyff_m</div>
+  </div>
+</section>
+
+<section class="howto">
+  <div class="wrap">
+    <p>Копируй промпт целиком, вставляй в любую нейросеть (ChatGPT, Gemini, Kimi, Qwen — не важно) и заменяй фразы в квадратных скобках на свою тему.</p>
+    <p>Не жди идеального ответа с первого раза — уточняй и переспрашивай, как в разговоре. Первый ответ почти всегда черновик, а не финал.</p>
+  </div>
+</section>
+
+<section class="category">
+  <div class="wrap">
+    <div class="cat-head">
+      <span class="cat-num">01</span>
+      <div>
+        <div class="cat-title">Идеи для контента</div>
+        <p class="cat-sub">Когда не знаешь, о чём снимать или писать сегодня</p>
+      </div>
+    </div>
+
+    <div class="prompt-card"><span class="prompt-index">1</span><span class="prompt-text">Придумай 10 идей для Reels на тему [твоя ниша], каждая с сильным hook и без банальных заголовков</span><button class="copy-btn" onclick="copyPrompt(this)">Скопировать</button></div>
+    <div class="prompt-card"><span class="prompt-index">2</span><span class="prompt-text">Проанализируй мои 5 последних постов: [опиши темы] и предложи 3 новые темы, которые логично их продолжают</span><button class="copy-btn" onclick="copyPrompt(this)">Скопировать</button></div>
+    <div class="prompt-card"><span class="prompt-index">3</span><span class="prompt-text">Составь список из 15 вопросов, которые могла бы задать моя аудитория про [тема], и отметь 5 самых сильных</span><button class="copy-btn" onclick="copyPrompt(this)">Скопировать</button></div>
+    <div class="prompt-card"><span class="prompt-index">4</span><span class="prompt-text">Предложи 5 разных форматов подачи одной темы [тема]: личный опыт, разбор, сравнение, чек-лист, эксперимент</span><button class="copy-btn" onclick="copyPrompt(this)">Скопировать</button></div>
+    <div class="prompt-card"><span class="prompt-index">5</span><span class="prompt-text">Какие 3 недавних события в нише [твоя ниша] можно превратить в быстрый Reel с реакцией на них</span><button class="copy-btn" onclick="copyPrompt(this)">Скопировать</button></div>
+  </div>
+</section>
+
+<section class="category">
+  <div class="wrap">
+    <div class="cat-head">
+      <span class="cat-num">02</span>
+      <div>
+        <div class="cat-title">Сценарии для Reels</div>
+        <p class="cat-sub">Когда идея есть, а сценарий не складывается</p>
+      </div>
+    </div>
+
+    <div class="prompt-card"><span class="prompt-index">6</span><span class="prompt-text">Напиши сценарий Reel в формате «я попробовала [действие]» — с хуком, серединой и честным выводом</span><button class="copy-btn" onclick="copyPrompt(this)">Скопировать</button></div>
+    <div class="prompt-card"><span class="prompt-index">7</span><span class="prompt-text">Разбей этот сценарий на тайминги по 3–5 секунд с указанием, что происходит в кадре на каждом шаге: [вставь сценарий]</span><button class="copy-btn" onclick="copyPrompt(this)">Скопировать</button></div>
+    <div class="prompt-card"><span class="prompt-index">8</span><span class="prompt-text">Предложи 3 альтернативных хука для одного и того же сценария: [вставь сценарий]</span><button class="copy-btn" onclick="copyPrompt(this)">Скопировать</button></div>
+    <div class="prompt-card"><span class="prompt-index">9</span><span class="prompt-text">Сократи этот сценарий Reel до 20 секунд, сохранив главную мысль: [вставь сценарий]</span><button class="copy-btn" onclick="copyPrompt(this)">Скопировать</button></div>
+    <div class="prompt-card"><span class="prompt-index">10</span><span class="prompt-text">Напиши текст для субтитров на экране к этому сценарию — коротко, без канцелярита: [вставь сценарий]</span><button class="copy-btn" onclick="copyPrompt(this)">Скопировать</button></div>
+  </div>
+</section>
+
+<section class="category">
+  <div class="wrap">
+    <div class="cat-head">
+      <span class="cat-num">03</span>
+      <div>
+        <div class="cat-title">Подписи и хештеги</div>
+        <p class="cat-sub">Когда видео готово, а текст под ним не идёт</p>
+      </div>
+    </div>
+
+    <div class="prompt-card"><span class="prompt-index">11</span><span class="prompt-text">Напиши подпись к посту на тему [тема] простыми словами, без канцелярита и без банальных фраз</span><button class="copy-btn" onclick="copyPrompt(this)">Скопировать</button></div>
+    <div class="prompt-card"><span class="prompt-index">12</span><span class="prompt-text">Предложи 3 варианта подписи к одному посту с разным настроением: мотивирующее, честное, ироничное</span><button class="copy-btn" onclick="copyPrompt(this)">Скопировать</button></div>
+    <div class="prompt-card"><span class="prompt-index">13</span><span class="prompt-text">Подбери 10 хештегов для поста на тему [тема], смешав широкие и узкие по охвату</span><button class="copy-btn" onclick="copyPrompt(this)">Скопировать</button></div>
+    <div class="prompt-card"><span class="prompt-index">14</span><span class="prompt-text">Сократи эту подпись до одного предложения, сохранив главную мысль: [вставь подпись]</span><button class="copy-btn" onclick="copyPrompt(this)">Скопировать</button></div>
+    <div class="prompt-card"><span class="prompt-index">15</span><span class="prompt-text">Перепиши эту подпись так, чтобы она звучала как личная мысль, а не рекламный текст: [вставь подпись]</span><button class="copy-btn" onclick="copyPrompt(this)">Скопировать</button></div>
+  </div>
+</section>
+
+<section class="category">
+  <div class="wrap">
+    <div class="cat-head">
+      <span class="cat-num">04</span>
+      <div>
+        <div class="cat-title">Ответы аудитории</div>
+        <p class="cat-sub">Когда комментарии и директ копятся быстрее, чем успеваешь отвечать</p>
+      </div>
+    </div>
+
+    <div class="prompt-card"><span class="prompt-index">16</span><span class="prompt-text">Напиши 5 вариантов ответа на комментарий с вопросом «[вставь вопрос]» в дружелюбном, но не заискивающем тоне</span><button class="copy-btn" onclick="copyPrompt(this)">Скопировать</button></div>
+    <div class="prompt-card"><span class="prompt-index">17</span><span class="prompt-text">Составь шаблон ответа в директ для тех, кто спрашивает про цену продукта [название продукта]</span><button class="copy-btn" onclick="copyPrompt(this)">Скопировать</button></div>
+    <div class="prompt-card"><span class="prompt-index">18</span><span class="prompt-text">Придумай вопрос для сторис, который вызовет много ответов от подписчиков на тему [тема]</span><button class="copy-btn" onclick="copyPrompt(this)">Скопировать</button></div>
+    <div class="prompt-card"><span class="prompt-index">19</span><span class="prompt-text">Напиши текст для закреплённого комментария под постом с мягким призывом сохранить или поделиться</span><button class="copy-btn" onclick="copyPrompt(this)">Скопировать</button></div>
+    <div class="prompt-card"><span class="prompt-index">20</span><span class="prompt-text">Предложи мягкую формулировку, чтобы рассказать про продукт [название] человеку, который написал позитивный комментарий</span><button class="copy-btn" onclick="copyPrompt(this)">Скопировать</button></div>
+  </div>
+</section>
+
+<section class="next">
+  <div class="wrap">
+    <div class="next-card">
+      <h2>Это только 20. Если хочешь <em>50 промптов и готовый шаблон контент-плана</em> —</h2>
+      <p>следующий шаг — «50 промптов, которые заменят тебе час раздумий над контентом» с шаблоном планирования на месяц вперёд.</p>
+      <div class="cta-row">
+        <a href="https://instagram.com/tannyff_m" class="btn-primary">Смотреть в профиле →</a>
+        <a href="20-promptov-dlya-kontenta.pdf" class="btn-secondary" id="pdf-link" download>Скачать этот гайд в PDF</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>Татьяна · <a href="https://instagram.com/tannyff">@tannyff_m</a> · сделано с ИИ, но написано человеком</p>
+  </div>
+</footer>
+
+<script>
+function copyPrompt(btn) {
+  const text = btn.previousElementSibling.textContent;
+  navigator.clipboard.writeText(text).then(() => {
+    const original = btn.textContent;
+    btn.textContent = 'Скопировано';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = original; btn.classList.remove('copied'); }, 1800);
+  });
+}
+</script>
+
+</body>
+</html>
