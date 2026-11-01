@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>50 промптов</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#000000">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@700;900&family=Golos+Text:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#000;--surface:#15110e;--line:#2a221c;--accent:#b08cff;--accent-hi:#c9b0ff;--text:#f3eee6;--muted:#a1968c;--display:"Unbounded",system-ui,sans-serif;--body:"Golos Text",system-ui,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font:400 17px/1.6 var(--body);-webkit-font-smoothing:antialiased}
+a{color:var(--accent-hi)}
+:focus-visible{outline:2px solid var(--accent-hi);outline-offset:3px;border-radius:4px}
+.wrap{max-width:720px;margin:0 auto;padding:0 20px}
+.hero{padding:64px 0 28px}
+h1{font:900 clamp(56px,16vw,120px)/.9 var(--display);letter-spacing:-.04em;color:var(--accent)}
+h1 small{display:block;font-size:clamp(24px,6.4vw,40px);color:var(--text);letter-spacing:-.02em;margin-top:10px;line-height:1.1}
+.lead{margin-top:20px;max-width:46ch}
+.files{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.dl{background:var(--accent);color:#000;border:0;font:700 15px var(--display);padding:14px 18px;border-radius:12px;cursor:pointer}
+.dl.ghost{background:none;color:var(--accent-hi);border:1px solid var(--accent)}
+.dl:disabled{opacity:.6;cursor:wait}
+.toc{display:flex;flex-wrap:wrap;gap:8px;padding:28px 0 0}
+.toc a{color:var(--text);text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-size:14px}
+.toc a:hover{border-color:var(--accent)}
+.cat{border-top:1px solid var(--line);margin-top:40px;padding-top:40px;scroll-margin-top:12px}
+.cat-head{display:flex;gap:16px;align-items:baseline;margin-bottom:20px}
+.cat-head span{font:900 40px/1 var(--display);color:var(--accent)}
+.cat-head h2{font:700 clamp(22px,5.6vw,30px)/1.15 var(--display)}
+.cat-head small{display:block;font:400 14px var(--body);color:var(--muted);margin-top:4px}
+.cards{display:grid;gap:12px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:18px}
+.card b{font:900 18px var(--display);color:var(--accent);display:block;margin-bottom:6px}
+.card pre{white-space:pre-wrap;font:400 15.5px/1.55 var(--body)}
+.card pre mark{background:none;color:var(--accent-hi);font-weight:600}
+.copy{margin-top:12px;background:var(--accent);color:#000;border:0;font:600 14px var(--body);padding:9px 14px;border-radius:10px;cursor:pointer}
+.copy.ok{background:var(--text)}
+.state{padding:120px 0;max-width:520px}
+.state h1{font-size:clamp(34px,9vw,56px)}
+.state p{margin-top:16px}
+footer{color:var(--muted);font-size:13px;padding:56px 0 40px}
+footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<main class="wrap" id="app">
+  <div class="state"><h1>Загружаю…</h1><p>Проверяю доступ к материалам.</p></div>
+</main>
+<script>
+const API='https://brviutjcldbmzpvmmzdv.supabase.co/functions/v1/';
+const app=document.getElementById('app');
+const params=new URLSearchParams(location.search);
+let token=params.get('token');
+try{if(token)localStorage.setItem('tannyff-access',token);else token=localStorage.getItem('tannyff-access')}catch(e){}
+
+function esc(s){return s.replace(/[&<>]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[m]))}
+function denied(){
+  app.innerHTML='<div class="state"><h1>Доступ не найден</h1><p>Ссылка устарела или открыта не из того браузера, где была оплата.</p><p>Напиши мне в директ <a href="https://ig.me/m/tannyff_m">@tannyff_m</a> с почтой, указанной при оплате, и я пришлю новую ссылку.</p></div>';
+}
+
+(async()=>{
+  if(!token)return denied();
+  let d;
+  try{d=await (await fetch(API+'get-materials?token='+encodeURIComponent(token))).json()}catch(e){
+    app.innerHTML='<div class="state"><h1>Нет связи</h1><p>Не получилось загрузить материалы. Проверь интернет и обнови страницу.</p></div>';return;
+  }
+  if(!d.valid)return denied();
+
+  let html='<header class="hero"><h1>50 <small>промптов для контента + шаблон контент-плана</small></h1>'+
+   '<p class="lead">Сохрани эту страницу в закладки. Скопируй промпт, вставь в Claude или другую нейросеть и замени выделенное на своё.</p>'+
+   '<div class="files"><button class="dl" data-file="pdf">Скачать PDF</button><button class="dl ghost" data-file="xlsx">Шаблон контент-плана (Excel)</button></div>'+
+   '<nav class="toc">'+d.categories.map((c,i)=>'<a href="#c'+i+'">'+esc(c.title)+'</a>').join('')+'</nav></header>';
+  let n=0;
+  d.categories.forEach((c,i)=>{
+    html+='<section class="cat" id="c'+i+'"><div class="cat-head"><span>'+esc(c.num)+'</span><h2>'+esc(c.title)+'<small>'+esc(c.sub)+'</small></h2></div><div class="cards">';
+    c.items.forEach(p=>{n++;html+='<article class="card"><b>'+n+'</b><pre>'+esc(p).replace(/\[[^\]]+\]/g,m=>'<mark>'+m+'</mark>')+'</pre><button class="copy">Скопировать</button></article>'});
+    html+='</div></section>';
+  });
+  html+='<footer>Татьяна, <a href="https://www.instagram.com/tannyff_m/">@tannyff_m</a>. Вопросы по материалам — в директ.</footer>';
+  app.innerHTML=html;
+})();
+
+document.addEventListener('click',async e=>{
+  const c=e.target.closest('.copy');
+  if(c){
+    const txt=c.parentElement.querySelector('pre').textContent;
+    const ok=()=>{c.textContent='Скопировано';c.classList.add('ok');setTimeout(()=>{c.textContent='Скопировать';c.classList.remove('ok')},1600)};
+    if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(txt).then(ok).catch(()=>fb(txt,ok))}else fb(txt,ok);
+    return;
+  }
+  const f=e.target.closest('.dl');if(!f)return;
+  const label=f.textContent;f.disabled=true;f.textContent='Скачиваю…';
+  try{
+    const r=await fetch(API+'get-file?token='+encodeURIComponent(token)+'&file='+f.dataset.file);
+    if(!r.ok)throw 0;
+    const name=(r.headers.get('content-disposition')||'').match(/filename="([^"]+)"/);
+    const url=URL.createObjectURL(await r.blob());
+    const a=document.createElement('a');a.href=url;a.download=name?name[1]:('50-promptov.'+f.dataset.file);document.body.appendChild(a);a.click();a.remove();
+    setTimeout(()=>URL.revokeObjectURL(url),4000);
+    f.textContent=label;
+  }catch(err){f.textContent='Не вышло, попробуй ещё раз'}
+  f.disabled=false;
+});
+function fb(txt,ok){const t=document.createElement('textarea');t.value=txt;document.body.appendChild(t);t.select();try{document.execCommand('copy');ok()}catch(e){}t.remove()}
+</script>
+</body>
+</html>

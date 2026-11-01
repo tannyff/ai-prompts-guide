@@ -1,262 +1,260 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>20 промптов для контента блогера с ИИ — tannyff</title>
-<meta name="description" content="Бесплатный гайд: 20 готовых промптов для идей, сценариев Reels, подписей и общения с аудиторией.">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>20 промптов для контента</title>
+<meta name="description" content="20 готовых промптов для идей, сценариев рилс, подписей и ответов подписчикам. Впиши свою тему один раз — и промпты подстроятся под тебя.">
+<meta property="og:title" content="20 промптов для контента — бесплатно">
+<meta property="og:description" content="Впиши свою тему один раз, и все 20 промптов подстроятся под твой блог.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#000000">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;900&family=Golos+Text:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --bg:#0D0E12; --bg2:#111318; --bg3:#161A22;
-    --blue:#4D9FFF; --blue-dim:#2E5C8F;
-    --ink:#E8F0FF; --ink-soft:#9AA7BD; --ink-dim:#6B7688;
-    --line: rgba(232,240,255,.08);
-  }
-  *{ margin:0; padding:0; box-sizing:border-box; }
-  html{ scroll-behavior:smooth; }
-  body{
-    background:var(--bg); color:var(--ink); font-family:'Jost',sans-serif;
-    -webkit-font-smoothing:antialiased;
-  }
-  a{ color:inherit; }
-  .wrap{ max-width:760px; margin:0 auto; padding:0 28px; }
+:root{
+  --bg:#000000;--surface:#15110e;--line:#2a221c;
+  --accent:#b08cff;--accent-hi:#c9b0ff;--text:#f3eee6;--muted:#a1968c;
+  --display:"Unbounded",system-ui,sans-serif;--body:"Golos Text",system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font:400 17px/1.6 var(--body);-webkit-font-smoothing:antialiased}
+a{color:var(--accent-hi)}
+:focus-visible{outline:2px solid var(--accent-hi);outline-offset:3px;border-radius:4px}
+.wrap{max-width:720px;margin:0 auto;padding:0 20px}
 
-  /* HERO */
-  .hero{
-    position:relative; overflow:hidden;
-    background:linear-gradient(160deg, var(--bg2) 0%, var(--bg) 70%);
-    padding:100px 0 90px;
-    border-bottom:1px solid var(--line);
-  }
-  .hero .grid-lines{
-    position:absolute; inset:0; opacity:.5;
-    background-image:
-      linear-gradient(var(--line) 1px, transparent 1px),
-      linear-gradient(90deg, var(--line) 1px, transparent 1px);
-    background-size:56px 56px;
-    mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 30%, transparent 75%);
-  }
-  .hero-inner{ position:relative; z-index:2; }
-  .eyebrow{
-    font-size:15px; letter-spacing:.14em; text-transform:uppercase;
-    color:var(--blue); font-weight:600; margin-bottom:22px;
-  }
-  h1{
-    font-family:'PT Serif',serif; font-weight:700; font-size:44px; line-height:1.22;
-    max-width:600px; letter-spacing:-.01em;
-  }
-  h1 em{ font-style:italic; color:var(--blue); }
-  .lede{
-    font-size:19px; line-height:1.6; color:var(--ink-soft); max-width:520px;
-    margin-top:26px; font-weight:300;
-  }
-  .signature{
-    margin-top:40px; display:flex; align-items:center; gap:14px;
-    font-size:15px; color:var(--ink-dim);
-  }
-  .signature .dot{ width:6px; height:6px; border-radius:50%; background:var(--blue); }
+.hero{padding:72px 0 40px}
+.by{color:var(--muted);font-size:15px;margin-bottom:28px}
+.by a{color:var(--text);text-decoration:none;border-bottom:1px solid var(--accent)}
+h1{font:900 clamp(64px,19vw,140px)/.88 var(--display);letter-spacing:-.04em;color:var(--accent)}
+h1 small{display:block;font-size:clamp(26px,7vw,46px);line-height:1.05;color:var(--text);letter-spacing:-.02em;margin-top:10px}
+.lead{font-size:clamp(18px,4.6vw,21px);max-width:36ch;margin:26px 0 0}
 
-  /* HOW TO USE */
-  .howto{ padding:56px 0; border-bottom:1px solid var(--line); }
-  .howto p{ font-size:16px; line-height:1.7; color:var(--ink-soft); font-weight:300; max-width:600px; }
-  .howto p + p{ margin-top:14px; }
+/* fill: the one memorable thing */
+.fill{padding:14px 0 16px;border-bottom:1px solid var(--line)}
+@media (min-width:640px){.fill{position:sticky;top:0;z-index:5;background:var(--bg)}}
+.fill-inner{background:var(--surface);border:1px solid var(--accent);border-radius:20px;padding:16px}
+.fill p{font:600 15px var(--body);margin-bottom:10px}
+.fields{display:grid;gap:10px}
+.fields label{display:block;font-size:13px;color:var(--muted);margin-bottom:4px}
+.fields input{width:100%;background:#000;border:1px solid var(--line);color:var(--text);font:400 16px var(--body);padding:12px 14px;border-radius:12px}
+.fields input:focus{border-color:var(--accent-hi);outline:none}
+@media (min-width:640px){.fields{grid-template-columns:1fr 1fr}}
 
-  /* CATEGORY */
-  .category{ padding:64px 0; border-bottom:1px solid var(--line); }
-  .category:nth-child(even){ background:var(--bg3); }
-  .cat-head{ display:flex; align-items:baseline; gap:18px; margin-bottom:34px; }
-  .cat-num{
-    font-family:'JetBrains Mono',monospace; font-size:14px; color:var(--blue);
-    border:1px solid var(--blue-dim); border-radius:100px; padding:5px 14px;
-    flex-shrink:0;
-  }
-  .cat-title{ font-family:'PT Serif',serif; font-weight:700; font-size:26px; }
-  .cat-sub{ font-size:15px; color:var(--ink-dim); margin-top:8px; margin-bottom:0; font-weight:300; }
+.howto{padding:36px 0 8px;color:var(--muted)}
+.howto p{max-width:62ch;margin-bottom:10px}
+.howto b{color:var(--text);font-weight:600}
 
-  .prompt-card{
-    background:var(--bg2); border:1px solid var(--line); border-radius:14px;
-    padding:22px 24px; margin-bottom:14px;
-    display:flex; gap:18px; align-items:flex-start;
-    transition: border-color .2s ease;
-  }
-  .prompt-card:hover{ border-color: var(--blue-dim); }
-  .prompt-index{
-    font-family:'JetBrains Mono',monospace; font-size:14px; color:var(--ink-dim);
-    padding-top:2px; flex-shrink:0; width:24px;
-  }
-  .prompt-text{
-    font-family:'JetBrains Mono',monospace; font-size:15px; line-height:1.65;
-    color:var(--ink); flex:1;
-  }
-  .copy-btn{
-    flex-shrink:0; background:transparent; border:1px solid var(--line);
-    color:var(--ink-dim); font-family:'Jost',sans-serif; font-size:13px;
-    padding:8px 14px; border-radius:100px; cursor:pointer;
-    transition: all .15s ease; white-space:nowrap;
-  }
-  .copy-btn:hover{ border-color:var(--blue); color:var(--blue); }
-  .copy-btn.copied{ border-color:var(--blue); color:var(--blue); }
+.group{padding:44px 0 8px}
+.group h2{font:700 clamp(24px,6vw,32px)/1.15 var(--display);letter-spacing:-.01em}
+.group .when{color:var(--muted);margin:8px 0 22px}
+.cards{display:grid;gap:14px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:18px 18px 16px}
+.card-top{display:flex;gap:14px;align-items:baseline;margin-bottom:8px}
+.card-top span{font:900 22px var(--display);color:var(--accent);min-width:30px}
+.card-top h3{font:600 16px/1.35 var(--body);color:var(--text)}
+.card pre{white-space:pre-wrap;font:400 15.5px/1.55 var(--body);color:var(--text)}
+.card pre mark{background:none;color:var(--accent-hi);font-weight:600}
+.copy{margin-top:12px;background:var(--accent);color:#000;border:0;font:600 14px var(--body);padding:9px 14px;border-radius:10px;cursor:pointer}
+.copy.ok{background:var(--text)}
 
-  /* NEXT STEP */
-  .next{ padding:80px 0; text-align:left; }
-  .next-card{
-    background:linear-gradient(135deg, var(--bg2), var(--bg3));
-    border:1px solid var(--blue-dim); border-radius:20px;
-    padding:48px 40px;
-  }
-  .next-card h2{
-    font-family:'PT Serif',serif; font-size:30px; font-weight:700; line-height:1.3;
-    max-width:480px;
-  }
-  .next-card h2 em{ font-style:italic; color:var(--blue); }
-  .next-card p{ color:var(--ink-soft); font-size:16px; margin-top:18px; max-width:460px; line-height:1.6; font-weight:300; }
-  .cta-row{ margin-top:30px; display:flex; gap:14px; flex-wrap:wrap; }
-  .btn-primary{
-    display:inline-block; background:var(--blue); color:#0a0e14; font-weight:600;
-    font-size:16px; padding:15px 28px; border-radius:100px; text-decoration:none;
-  }
-  .btn-secondary{
-    display:inline-block; background:transparent; border:1px solid var(--line);
-    color:var(--ink-soft); font-weight:500; font-size:16px; padding:15px 28px;
-    border-radius:100px; text-decoration:none;
-  }
+.next{border-top:1px solid var(--line);margin-top:56px;padding:56px 0 24px}
+.next h2{font:700 clamp(28px,7.4vw,44px)/1.1 var(--display);letter-spacing:-.02em;margin-bottom:16px}
+.next p{max-width:56ch;margin-bottom:12px}
+.word{display:inline-block;font:700 15px var(--display);color:#000;background:var(--accent);padding:3px 10px;border-radius:8px}
+.more{display:grid;gap:12px;margin:28px 0 0}
+.more a{display:block;border:1px solid var(--line);border-radius:18px;padding:18px 20px;color:var(--text);text-decoration:none}
+.more a:hover{border-color:var(--accent)}
+.more b{display:block;font:700 18px var(--display);margin-bottom:4px}
+.more span{color:var(--muted);font-size:15px}
+.pdf{display:inline-block;margin-top:28px;color:var(--text);border-bottom:1px solid var(--accent);text-decoration:none}
+footer{color:var(--muted);font-size:13px;padding:40px 0}
+footer a{color:var(--muted)}
+@media (min-width:640px){.more{grid-template-columns:1fr 1fr}}
 
-  footer{ padding:40px 0 60px; border-top:1px solid var(--line); }
-  footer p{ font-size:14px; color:var(--ink-dim); }
-  footer a{ color:var(--blue); text-decoration:none; }
-
-  @media (max-width:640px){
-    h1{ font-size:32px; }
-    .hero{ padding:70px 0 60px; }
-    .prompt-card{ flex-direction:column; }
-    .copy-btn{ align-self:flex-start; }
-    .next-card{ padding:34px 24px; }
-  }
+.buy{border-top:1px solid var(--line);margin-top:56px;padding:56px 0 8px;scroll-margin-top:16px}
+.buy-card{border:1px solid var(--accent);border-radius:24px;padding:24px 20px;background:var(--surface)}
+.buy h2{font:700 clamp(26px,7vw,40px)/1.1 var(--display);letter-spacing:-.02em}
+.price{font:900 clamp(44px,12vw,64px)/1 var(--display);color:var(--accent);margin:18px 0 4px}
+.price-note{color:var(--muted);font-size:15px}
+.inside{list-style:none;display:grid;gap:10px;margin:22px 0}
+.inside li{padding-left:28px;position:relative}
+.inside li::before{content:"";position:absolute;left:4px;top:.55em;width:10px;height:10px;border-radius:3px;background:var(--accent)}
+.buy-form label{display:block;font-size:13px;color:var(--muted);margin-bottom:4px}
+.buy-form input[type=email]{width:100%;background:#000;border:1px solid var(--line);color:var(--text);font:400 16px var(--body);padding:13px 14px;border-radius:12px}
+.buy-form input[type=email]:focus{border-color:var(--accent-hi);outline:none}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.pay{width:100%;margin-top:12px;background:var(--accent);color:#000;border:0;font:700 17px var(--display);padding:17px;border-radius:14px;cursor:pointer}
+.pay:hover{background:var(--accent-hi)}
+.pay:disabled{opacity:.6;cursor:wait}
+.buy-msg{min-height:1.4em;margin-top:10px;font-size:15px;color:var(--muted)}
+.buy-msg.err{color:#ff8f7a}
+.fine{color:var(--muted);font-size:13px;margin-top:12px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
 </head>
 <body>
+<main class="wrap">
 
-<section class="hero">
-  <div class="grid-lines"></div>
-  <div class="wrap hero-inner">
-    <div class="eyebrow">Бесплатный гайд</div>
-    <h1>20 промптов, которые заменят тебе <em>час раздумий</em> над контентом</h1>
-    <p class="lede">Не теория про нейросети — конкретные формулировки запросов, которые я использую сама: для идей, сценариев Reels, подписей и ответов аудитории.</p>
-    <div class="signature"><span class="dot"></span> Татьяна · tannyff_m</div>
+<header class="hero">
+  <p class="by">Бесплатный гайд от Татьяны, <a href="https://www.instagram.com/tannyff_m/">@tannyff_m</a></p>
+  <h1>20 <small>промптов для контента, которые я использую сама</small></h1>
+  <p class="lead">Идеи, сценарии рилс, подписи и ответы подписчикам. Впиши свою тему один раз, и все промпты подстроятся под твой блог.</p>
+  <p class="lead" style="margin-top:12px;font-size:16px;color:var(--muted)">Нужно больше? <a href="#buy">Полная версия: 50 промптов и шаблон</a></p>
+</header>
+
+<section class="fill" aria-label="Подставить свои данные">
+  <div class="fill-inner">
+    <p>Сначала заполни два поля</p>
+    <div class="fields">
+      <div><label for="topic">О чём твой блог</label><input id="topic" placeholder="например, ИИ для новичков" autocomplete="off"></div>
+      <div><label for="aud">Кто твоя аудитория</label><input id="aud" placeholder="например, девушки 20–30, фрилансеры" autocomplete="off"></div>
+    </div>
   </div>
 </section>
 
 <section class="howto">
-  <div class="wrap">
-    <p>Копируй промпт целиком, вставляй в любую нейросеть (ChatGPT, Gemini, Kimi, Qwen — не важно) и заменяй фразы в квадратных скобках на свою тему.</p>
-    <p>Не жди идеального ответа с первого раза — уточняй и переспрашивай, как в разговоре. Первый ответ почти всегда черновик, а не финал.</p>
-  </div>
+  <p><b>Как пользоваться.</b> Нажми «Скопировать» и вставь в Claude, ChatGPT или любую другую нейросеть. То, что выделено оранжевым в квадратных скобках, замени на своё.</p>
+  <p><b>Первый ответ почти всегда черновик.</b> Уточняй, как в разговоре: «короче», «живее», «дай ещё 5 вариантов».</p>
 </section>
 
-<section class="category">
-  <div class="wrap">
-    <div class="cat-head">
-      <span class="cat-num">01</span>
-      <div>
-        <div class="cat-title">Идеи для контента</div>
-        <p class="cat-sub">Когда не знаешь, о чём снимать или писать сегодня</p>
-      </div>
-    </div>
+<div id="groups"></div>
 
-    <div class="prompt-card"><span class="prompt-index">1</span><span class="prompt-text">Придумай 10 идей для Reels на тему [твоя ниша], каждая с сильным hook и без банальных заголовков</span><button class="copy-btn" onclick="copyPrompt(this)">Скопировать</button></div>
-    <div class="prompt-card"><span class="prompt-index">2</span><span class="prompt-text">Проанализируй мои 5 последних постов: [опиши темы] и предложи 3 новые темы, которые логично их продолжают</span><button class="copy-btn" onclick="copyPrompt(this)">Скопировать</button></div>
-    <div class="prompt-card"><span class="prompt-index">3</span><span class="prompt-text">Составь список из 15 вопросов, которые могла бы задать моя аудитория про [тема], и отметь 5 самых сильных</span><button class="copy-btn" onclick="copyPrompt(this)">Скопировать</button></div>
-    <div class="prompt-card"><span class="prompt-index">4</span><span class="prompt-text">Предложи 5 разных форматов подачи одной темы [тема]: личный опыт, разбор, сравнение, чек-лист, эксперимент</span><button class="copy-btn" onclick="copyPrompt(this)">Скопировать</button></div>
-    <div class="prompt-card"><span class="prompt-index">5</span><span class="prompt-text">Какие 3 недавних события в нише [твоя ниша] можно превратить в быстрый Reel с реакцией на них</span><button class="copy-btn" onclick="copyPrompt(this)">Скопировать</button></div>
-  </div>
-</section>
-
-<section class="category">
-  <div class="wrap">
-    <div class="cat-head">
-      <span class="cat-num">02</span>
-      <div>
-        <div class="cat-title">Сценарии для Reels</div>
-        <p class="cat-sub">Когда идея есть, а сценарий не складывается</p>
-      </div>
-    </div>
-
-    <div class="prompt-card"><span class="prompt-index">6</span><span class="prompt-text">Напиши сценарий Reel в формате «я попробовала [действие]» — с хуком, серединой и честным выводом</span><button class="copy-btn" onclick="copyPrompt(this)">Скопировать</button></div>
-    <div class="prompt-card"><span class="prompt-index">7</span><span class="prompt-text">Разбей этот сценарий на тайминги по 3–5 секунд с указанием, что происходит в кадре на каждом шаге: [вставь сценарий]</span><button class="copy-btn" onclick="copyPrompt(this)">Скопировать</button></div>
-    <div class="prompt-card"><span class="prompt-index">8</span><span class="prompt-text">Предложи 3 альтернативных хука для одного и того же сценария: [вставь сценарий]</span><button class="copy-btn" onclick="copyPrompt(this)">Скопировать</button></div>
-    <div class="prompt-card"><span class="prompt-index">9</span><span class="prompt-text">Сократи этот сценарий Reel до 20 секунд, сохранив главную мысль: [вставь сценарий]</span><button class="copy-btn" onclick="copyPrompt(this)">Скопировать</button></div>
-    <div class="prompt-card"><span class="prompt-index">10</span><span class="prompt-text">Напиши текст для субтитров на экране к этому сценарию — коротко, без канцелярита: [вставь сценарий]</span><button class="copy-btn" onclick="copyPrompt(this)">Скопировать</button></div>
-  </div>
-</section>
-
-<section class="category">
-  <div class="wrap">
-    <div class="cat-head">
-      <span class="cat-num">03</span>
-      <div>
-        <div class="cat-title">Подписи и хештеги</div>
-        <p class="cat-sub">Когда видео готово, а текст под ним не идёт</p>
-      </div>
-    </div>
-
-    <div class="prompt-card"><span class="prompt-index">11</span><span class="prompt-text">Напиши подпись к посту на тему [тема] простыми словами, без канцелярита и без банальных фраз</span><button class="copy-btn" onclick="copyPrompt(this)">Скопировать</button></div>
-    <div class="prompt-card"><span class="prompt-index">12</span><span class="prompt-text">Предложи 3 варианта подписи к одному посту с разным настроением: мотивирующее, честное, ироничное</span><button class="copy-btn" onclick="copyPrompt(this)">Скопировать</button></div>
-    <div class="prompt-card"><span class="prompt-index">13</span><span class="prompt-text">Подбери 10 хештегов для поста на тему [тема], смешав широкие и узкие по охвату</span><button class="copy-btn" onclick="copyPrompt(this)">Скопировать</button></div>
-    <div class="prompt-card"><span class="prompt-index">14</span><span class="prompt-text">Сократи эту подпись до одного предложения, сохранив главную мысль: [вставь подпись]</span><button class="copy-btn" onclick="copyPrompt(this)">Скопировать</button></div>
-    <div class="prompt-card"><span class="prompt-index">15</span><span class="prompt-text">Перепиши эту подпись так, чтобы она звучала как личная мысль, а не рекламный текст: [вставь подпись]</span><button class="copy-btn" onclick="copyPrompt(this)">Скопировать</button></div>
-  </div>
-</section>
-
-<section class="category">
-  <div class="wrap">
-    <div class="cat-head">
-      <span class="cat-num">04</span>
-      <div>
-        <div class="cat-title">Ответы аудитории</div>
-        <p class="cat-sub">Когда комментарии и директ копятся быстрее, чем успеваешь отвечать</p>
-      </div>
-    </div>
-
-    <div class="prompt-card"><span class="prompt-index">16</span><span class="prompt-text">Напиши 5 вариантов ответа на комментарий с вопросом «[вставь вопрос]» в дружелюбном, но не заискивающем тоне</span><button class="copy-btn" onclick="copyPrompt(this)">Скопировать</button></div>
-    <div class="prompt-card"><span class="prompt-index">17</span><span class="prompt-text">Составь шаблон ответа в директ для тех, кто спрашивает про цену продукта [название продукта]</span><button class="copy-btn" onclick="copyPrompt(this)">Скопировать</button></div>
-    <div class="prompt-card"><span class="prompt-index">18</span><span class="prompt-text">Придумай вопрос для сторис, который вызовет много ответов от подписчиков на тему [тема]</span><button class="copy-btn" onclick="copyPrompt(this)">Скопировать</button></div>
-    <div class="prompt-card"><span class="prompt-index">19</span><span class="prompt-text">Напиши текст для закреплённого комментария под постом с мягким призывом сохранить или поделиться</span><button class="copy-btn" onclick="copyPrompt(this)">Скопировать</button></div>
-    <div class="prompt-card"><span class="prompt-index">20</span><span class="prompt-text">Предложи мягкую формулировку, чтобы рассказать про продукт [название] человеку, который написал позитивный комментарий</span><button class="copy-btn" onclick="copyPrompt(this)">Скопировать</button></div>
+<section class="buy" id="buy">
+  <div class="buy-card">
+    <h2>50 промптов + шаблон контент-плана</h2>
+    <p class="price">990 ₽</p>
+    <p class="price-note">Разовый платёж, доступ сразу после оплаты</p>
+    <ul class="inside">
+      <li>50 развёрнутых промптов в 5 категориях: идеи, сценарии рилс, подписи, ответы подписчикам</li>
+      <li>Новая категория «Планирование и анализ»: контент-план на месяц, рубрики, метрики, питч для брендов</li>
+      <li>Excel-шаблон контент-плана, который заполняется вместе с промптами</li>
+      <li>Всё в PDF, чтобы было под рукой без интернета</li>
+    </ul>
+    <form class="buy-form" id="buyForm" novalidate>
+      <label for="email">Почта для чека и доступа</label>
+      <input id="email" type="email" required placeholder="you@mail.ru" autocomplete="email">
+      <input class="hp" name="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <button class="pay" type="submit" id="payBtn">Купить за 990 ₽</button>
+      <p class="buy-msg" id="buyMsg" role="status"></p>
+    </form>
+    <p class="fine">Оплата через Робокассу: карта, СБП. После оплаты вернёшься на страницу с материалами. Оплачивай в этом же браузере.</p>
   </div>
 </section>
 
 <section class="next">
-  <div class="wrap">
-    <div class="next-card">
-      <h2>Это только 20. Если хочешь <em>50 промптов и готовый шаблон контент-плана</em> —</h2>
-      <p>следующий шаг — «50 промптов, которые заменят тебе час раздумий над контентом» с шаблоном планирования на месяц вперёд.</p>
-      <div class="cta-row">
-        <a href="https://instagram.com/tannyff_m" class="btn-primary">Смотреть в профиле →</a>
-        <a href="20-promptov-dlya-kontenta.pdf" class="btn-secondary" id="pdf-link" download>Скачать этот гайд в PDF</a>
-      </div>
-    </div>
+  <h2>Хочешь, чтобы рилс приносили подписчиков?</h2>
+  <p>Готовлю интенсив «Рилс через Claude: от идеи до монтажа». Промпты, сценарии и монтаж в одной системе, с заданиями.</p>
+  <p>Напиши мне в директ слово <span class="word">ИНТЕНСИВ</span>, и я сообщу о старте первой.</p>
+  <div class="more">
+    <a href="https://tannyff.github.io/claude-start/"><b>Claude с нуля</b><span>Пошаговый гайд: от регистрации до первой игры за вечер</span></a>
+    <a href="https://tannyff.github.io/tannyff-templates/"><b>5 шаблонов</b><span>Контент-план, отчёт по блогу, КП и бриф для клиентов</span></a>
   </div>
+  <a class="pdf" href="20-promptov-dlya-kontenta.pdf" download>Скачать гайд в PDF</a>
 </section>
 
-<footer>
-  <div class="wrap">
-    <p>Татьяна · <a href="https://instagram.com/tannyff">@tannyff_m</a> · сделано с ИИ, но написано человеком</p>
-  </div>
-</footer>
+<footer>Татьяна, <a href="https://www.instagram.com/tannyff_m/">@tannyff_m</a>. Сделано с ИИ, проверено человеком.</footer>
+</main>
 
 <script>
-function copyPrompt(btn) {
-  const text = btn.previousElementSibling.textContent;
-  navigator.clipboard.writeText(text).then(() => {
-    const original = btn.textContent;
-    btn.textContent = 'Скопировано';
-    btn.classList.add('copied');
-    setTimeout(() => { btn.textContent = original; btn.classList.remove('copied'); }, 1800);
+// {T} — тема, {A} — аудитория; [..] — то, что заполняют вручную
+const GROUPS=[
+ ["Идеи для контента","Когда не знаешь, о чём снимать сегодня",[
+  ["10 идей для рилс","Я веду блог про {T}, моя аудитория — {A}. Придумай 10 идей для рилс. Для каждой: тема, первая фраза-хук до 8 слов и почему это зацепит именно мою аудиторию. Без банальностей вроде «5 советов» и «секретов успеха»."],
+  ["Продолжение того, что уже зашло","Я веду блог про {T}. Вот темы моих последних постов и сколько они набрали: [перечисли 5 тем и просмотры]. Найди, что объединяет самые успешные, и предложи 5 новых тем, которые логично их продолжают."],
+  ["Вопросы аудитории","Моя аудитория — {A}, блог про {T}. Составь 15 вопросов, которые эти люди задают себе или в поисковике, но стесняются спросить вслух. Отметь 5 вопросов, из которых получатся самые сильные рилс."],
+  ["Одна тема — пять подач","Тема: [тема]. Мой блог про {T}, аудитория — {A}. Покажи 5 разных способов подать эту тему: личный опыт, разбор ошибки, сравнение «было — стало», чек-лист, эксперимент. Для каждого дай хук и короткий план ролика."],
+  ["Ролик на инфоповод","Мой блог про {T}. Какие события или тренды в этой теме обсуждают последние две недели? Выбери 3, на которые можно быстро снять реакцию, и для каждого предложи угол, мнение и хук. Если ищешь в интернете, дай ссылки."]
+ ]],
+ ["Сценарии для рилс","Когда идея есть, а сценарий не складывается",[
+  ["Формат «я попробовала»","Напиши сценарий рилс на 30–40 секунд в формате «я попробовала [что]». Блог про {T}, аудитория — {A}. Структура: хук, что делала, что получилось, честный вывод, вопрос к зрителям. Пиши разговорно, как будто рассказываю подруге."],
+  ["Раскадровка","Разбей этот сценарий на отрезки по 3–5 секунд. Для каждого: что я говорю, что в кадре и какой текст на экране. Сценарий: [вставь сценарий]"],
+  ["Три хука на выбор","Вот сценарий рилс: [вставь сценарий]. Предложи 3 альтернативных хука: через любопытство, через спор и через цифру. Каждый до 8 слов. Скажи, какой сильнее для аудитории {A} и почему."],
+  ["Сократить до 20 секунд","Сократи этот сценарий до 20 секунд, сохранив главную мысль и хук. Убери вступления и повторы. Сценарий: [вставь сценарий]"],
+  ["Текст на экран","Напиши короткие субтитры на экран к этому сценарию: не больше 6 слов на фразу, без канцелярита, главное слово в каждой фразе выдели заглавными. Сценарий: [вставь сценарий]"]
+ ]],
+ ["Подписи и хэштеги","Когда видео готово, а текст не идёт",[
+  ["Подпись, которая собирает комментарии","Напиши подпись к рилс про [тема] для блога про {T}. 2–3 коротких предложения, потом вопрос, на который легко ответить в комментариях. Без фраз «друзья», «делитесь мнением» и рекламного тона."],
+  ["Три настроения","Предложи 3 варианта подписи к посту про [тема]: тёплый, честный и с лёгкой иронией. Каждый до 300 знаков. Моя аудитория — {A}."],
+  ["Хэштеги с умом","Подбери 10 хэштегов для рилс про [тема] в блоге про {T}: 3 широких, 4 средних и 3 узких. Только на русском и те, которыми реально пользуются, без выдуманных."],
+  ["Сократить до одной мысли","Сократи эту подпись до одного-двух предложений, оставь главную мысль и вопрос в конце: [вставь подпись]"],
+  ["Убрать рекламность","Перепиши эту подпись так, чтобы она звучала как личная мысль, а не реклама. Убери восклицательные знаки и громкие слова: [вставь подпись]"]
+ ]],
+ ["Ответы подписчикам","Когда комментарии и директ копятся быстрее, чем успеваешь отвечать",[
+  ["Ответ на вопрос в комментариях","Мне задали вопрос в комментариях: «[вставь вопрос]». Блог про {T}. Дай 3 варианта ответа до 2 предложений: дружелюбный, экспертный и с юмором. Без заискивания."],
+  ["Ответ про цену","Напиши шаблон ответа в директ человеку, который спрашивает цену продукта [название]. Сначала короткий вопрос о его задаче, потом цена и что входит, в конце мягкий следующий шаг. Тон спокойный, без давления."],
+  ["Вопрос для сторис","Придумай 5 вопросов для сторис на тему [тема], на которые моя аудитория ({A}) захочет ответить. Половина с вариантами ответа, половина открытые."],
+  ["Закреплённый комментарий","Напиши закреплённый комментарий под рилс про [тема]: одно предложение с дополнительной пользой и одно с мягкой просьбой сохранить ролик. Без «подписывайтесь»."],
+  ["Мягко рассказать о продукте","Человек оставил тёплый комментарий: «[вставь комментарий]». Предложи ответ, который благодарит и ненавязчиво упоминает мой продукт [название], если он может быть полезен. До 3 предложений."]
+ ]]
+];
+
+const root=document.getElementById('groups');
+const topic=document.getElementById('topic'),aud=document.getElementById('aud');
+let n=0;
+GROUPS.forEach(([title,when,items])=>{
+  const s=document.createElement('section');s.className='group';
+  s.innerHTML='<h2></h2><p class="when"></p><div class="cards"></div>';
+  s.querySelector('h2').textContent=title;s.querySelector('.when').textContent=when;
+  const box=s.querySelector('.cards');
+  items.forEach(([h,p])=>{
+    n++;
+    const c=document.createElement('article');c.className='card';c.dataset.tpl=p;
+    c.innerHTML='<div class="card-top"><span>'+n+'</span><h3></h3></div><pre></pre><button class="copy">Скопировать</button>';
+    c.querySelector('h3').textContent=h;
+    box.appendChild(c);
+  });
+  root.appendChild(s);
+});
+
+function esc(s){return s.replace(/[&<>]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[m]))}
+function fillText(tpl){
+  const t=topic.value.trim()||'[тема блога]',a=aud.value.trim()||'[твоя аудитория]';
+  return tpl.replaceAll('{T}',t).replaceAll('{A}',a);
+}
+function render(){
+  document.querySelectorAll('.card').forEach(c=>{
+    c.querySelector('pre').innerHTML=esc(fillText(c.dataset.tpl)).replace(/\[[^\]]+\]/g,m=>'<mark>'+m+'</mark>');
   });
 }
-</script>
+const KEY='prompts-fill';
+try{const v=JSON.parse(localStorage.getItem(KEY)||'{}');topic.value=v.t||'';aud.value=v.a||''}catch(e){}
+[topic,aud].forEach(i=>i.addEventListener('input',()=>{
+  render();
+  try{localStorage.setItem(KEY,JSON.stringify({t:topic.value,a:aud.value}))}catch(e){}
+}));
+render();
 
+document.addEventListener('click',e=>{
+  const b=e.target.closest('.copy');if(!b)return;
+  const txt=b.closest('.card').querySelector('pre').textContent;
+  const ok=()=>{b.textContent='Скопировано';b.classList.add('ok');setTimeout(()=>{b.textContent='Скопировать';b.classList.remove('ok')},1600)};
+  if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(txt).then(ok).catch(()=>fb(txt,ok))}else fb(txt,ok);
+});
+function fb(txt,ok){const t=document.createElement('textarea');t.value=txt;document.body.appendChild(t);t.select();try{document.execCommand('copy');ok()}catch(e){}t.remove()}
+
+// оплата: заказ создаётся на сервере, секрет заказа остаётся только в этом браузере
+const API='https://brviutjcldbmzpvmmzdv.supabase.co/functions/v1/';
+const form=document.getElementById('buyForm'),msg=document.getElementById('buyMsg'),btn=document.getElementById('payBtn');
+form.addEventListener('submit',async e=>{
+  e.preventDefault();
+  const email=document.getElementById('email').value.trim();
+  if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){msg.textContent='Проверь почту: на неё придёт чек.';msg.className='buy-msg err';return}
+  btn.disabled=true;msg.className='buy-msg';msg.textContent='Создаю заказ…';
+  try{
+    const r=await fetch(API+'create-order',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({product_slug:'50-promptov',email,hp_field:form.hp.value})});
+    const d=await r.json();
+    if(!r.ok||!d.pay_url)throw new Error(d.error||'no url');
+    let saved=false;
+    try{localStorage.setItem('tannyff-order',JSON.stringify({inv_id:d.inv_id,order_secret:d.order_secret}));saved=true}catch(err){}
+    if(!saved){msg.className='buy-msg err';msg.textContent='Браузер не сохраняет данные заказа (частный режим?). Открой сайт в обычном окне.';btn.disabled=false;return}
+    location.href=d.pay_url;
+  }catch(err){
+    msg.className='buy-msg err';msg.textContent='Не получилось создать заказ. Попробуй ещё раз через минуту или напиши мне в директ.';btn.disabled=false;
+  }
+});
+</script>
 </body>
 </html>

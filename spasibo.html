@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Спасибо за покупку</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#000000">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@700;900&family=Golos+Text:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#000;--surface:#15110e;--line:#2a221c;--accent:#b08cff;--text:#f3eee6;--muted:#a1968c;--display:"Unbounded",system-ui,sans-serif;--body:"Golos Text",system-ui,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font:400 17px/1.6 var(--body);min-height:100vh;display:grid;place-items:center;padding:24px}
+.box{max-width:520px}
+h1{font:900 clamp(36px,10vw,60px)/1 var(--display);letter-spacing:-.03em;color:var(--accent);margin-bottom:20px}
+p{margin-bottom:14px}
+.muted{color:var(--muted);font-size:15px}
+.dots{display:inline-flex;gap:6px;margin:8px 0 18px}
+.dots i{width:10px;height:10px;border-radius:50%;background:var(--accent);animation:p 1.2s infinite}
+.dots i:nth-child(2){animation-delay:.2s}.dots i:nth-child(3){animation-delay:.4s}
+@keyframes p{0%,100%{opacity:.25}50%{opacity:1}}
+.btn{display:inline-block;background:var(--accent);color:#000;font:700 16px var(--display);padding:16px 22px;border-radius:14px;text-decoration:none;margin-top:8px}
+a{color:var(--accent)}
+@media (prefers-reduced-motion:reduce){.dots i{animation:none;opacity:1}}
+</style>
+</head>
+<body>
+<main class="box" id="box">
+  <h1>Спасибо!</h1>
+  <p id="status">Проверяю оплату. Обычно это занимает несколько секунд.</p>
+  <div class="dots" id="dots" aria-hidden="true"><i></i><i></i><i></i></div>
+  <p class="muted">Не закрывай страницу, сейчас откроются материалы.</p>
+</main>
+<script>
+const API='https://brviutjcldbmzpvmmzdv.supabase.co/functions/v1/';
+const box=document.getElementById('box');
+function show(html){box.innerHTML=html}
+let order=null;
+try{order=JSON.parse(localStorage.getItem('tannyff-order')||'null')}catch(e){}
+
+if(!order){
+  show('<h1>Почти готово</h1><p>Не нашла данные заказа в этом браузере. Так бывает, если оплата прошла на другом устройстве или в другом браузере.</p><p>Напиши мне в директ <a href="https://ig.me/m/tannyff_m">@tannyff_m</a> и укажи почту, с которой оплачивала. Пришлю доступ вручную.</p>');
+}else{
+  let tries=0;
+  (async function check(){
+    tries++;
+    try{
+      const r=await fetch(API+'check-order?inv_id='+encodeURIComponent(order.inv_id)+'&order_secret='+encodeURIComponent(order.order_secret));
+      const d=await r.json();
+      if(d.paid&&d.access_token){
+        try{localStorage.setItem('tannyff-access',d.access_token)}catch(e){}
+        location.replace('materials.html?token='+encodeURIComponent(d.access_token));
+        return;
+      }
+    }catch(e){}
+    // Робокасса подтверждает оплату с задержкой, поэтому ждём до ~2 минут
+    if(tries<40){setTimeout(check,3000)}
+    else show('<h1>Оплата ещё обрабатывается</h1><p>Банк пока не подтвердил платёж. Обнови страницу через пару минут.</p><a class="btn" href="spasibo.html">Проверить ещё раз</a><p class="muted" style="margin-top:20px">Если деньги списались, а доступа нет, напиши мне в директ <a href="https://ig.me/m/tannyff_m">@tannyff_m</a> с почтой, указанной при оплате.</p>');
+  })();
+}
+</script>
+</body>
+</html>

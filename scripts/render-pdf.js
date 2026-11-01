@@ -19,8 +19,8 @@ async function main() {
   // Кнопки "Скопировать" не нужны в статичном PDF
   await page.addStyleTag({
     content: `
-      .copy-btn { display: none !important; }
-      .prompt-card { padding-right: 24px !important; }
+      .copy, .fill { display: none !important; }
+      .howto { padding-top: 0 !important; }
     `,
   });
 
