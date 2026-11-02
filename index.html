@@ -92,6 +92,9 @@ footer a{color:var(--muted)}
 .buy-msg{min-height:1.4em;margin-top:10px;font-size:15px;color:var(--muted)}
 .buy-msg.err{color:#ff8f7a}
 .fine{color:var(--muted);font-size:13px;margin-top:12px}
+.agree{display:flex!important;gap:10px;align-items:flex-start;margin:14px 0 4px!important;font-size:13px!important;line-height:1.5;cursor:pointer}
+.agree input{width:18px;height:18px;flex:none;margin-top:1px;accent-color:var(--accent)}
+.agree a{color:var(--accent-hi)}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
 </head>
@@ -137,10 +140,11 @@ footer a{color:var(--muted)}
       <label for="email">Почта для чека и доступа</label>
       <input id="email" type="email" required placeholder="you@mail.ru" autocomplete="email">
       <input class="hp" name="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <label class="agree"><input type="checkbox" id="agree" required> <span>Я принимаю условия <a href="oferta.html" target="_blank">публичной оферты</a> и даю согласие на обработку персональных данных по <a href="privacy.html" target="_blank">политике</a></span></label>
       <button class="pay" type="submit" id="payBtn">Купить за 990 ₽</button>
       <p class="buy-msg" id="buyMsg" role="status"></p>
     </form>
-    <p class="fine">Оплата через Робокассу: карта, СБП. После оплаты вернёшься на страницу с материалами. Оплачивай в этом же браузере.</p>
+    <p class="fine">Оплата через Робокассу: карта, СБП. Сразу после оплаты откроется страница с материалами, а на почту придёт письмо со ссылкой (действует 45 дней) и чек. Если файлы не придут или не откроются, верну деньги или пришлю заново, подробнее в <a href="oferta.html">оферте</a>.</p>
   </div>
 </section>
 
@@ -155,7 +159,7 @@ footer a{color:var(--muted)}
   <a class="pdf" href="20-promptov-dlya-kontenta.pdf" download>Скачать гайд в PDF</a>
 </section>
 
-<footer>Татьяна, <a href="https://www.instagram.com/tannyff_m/">@tannyff_m</a>. Сделано с ИИ, проверено человеком.</footer>
+<footer>Татьяна, <a href="https://www.instagram.com/tannyff_m/">@tannyff_m</a>. Сделано с ИИ, проверено человеком.<br>Самозанятая Мунарева Татьяна Александровна, ИНН 667358493432, г. Екатеринбург<br>Почта: <a href="mailto:tannyff@vk.com">tannyff@vk.com</a> · Телефон: <a href="tel:+79220220020">+7 922 022-00-20</a><br><a href="https://tannyff.github.io/ai-prompts-guide/oferta.html">Публичная оферта</a> · <a href="https://tannyff.github.io/ai-prompts-guide/privacy.html">Политика обработки персональных данных</a></footer>
 </main>
 
 <script>
@@ -242,6 +246,7 @@ form.addEventListener('submit',async e=>{
   e.preventDefault();
   const email=document.getElementById('email').value.trim();
   if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){msg.textContent='Проверь почту: на неё придёт чек.';msg.className='buy-msg err';return}
+  if(!document.getElementById('agree').checked){msg.textContent='Отметь галочку согласия с офертой.';msg.className='buy-msg err';return}
   btn.disabled=true;msg.className='buy-msg';msg.textContent='Создаю заказ…';
   try{
     const r=await fetch(API+'create-order',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({product_slug:'50-promptov',email,hp_field:form.hp.value})});

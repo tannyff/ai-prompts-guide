@@ -23,6 +23,8 @@ p{margin-bottom:14px}
 @keyframes p{0%,100%{opacity:.25}50%{opacity:1}}
 .btn{display:inline-block;background:var(--accent);color:#000;font:700 16px var(--display);padding:16px 22px;border-radius:14px;text-decoration:none;margin-top:8px}
 a{color:var(--accent)}
+footer{color:var(--muted);font-size:13px;line-height:1.7;max-width:560px;margin-top:32px;text-align:center}
+footer a{color:var(--muted)}
 @media (prefers-reduced-motion:reduce){.dots i{animation:none;opacity:1}}
 </style>
 </head>
@@ -33,6 +35,7 @@ a{color:var(--accent)}
   <div class="dots" id="dots" aria-hidden="true"><i></i><i></i><i></i></div>
   <p class="muted">Не закрывай страницу, сейчас откроются материалы.</p>
 </main>
+<footer>Самозанятая Мунарева Татьяна Александровна, ИНН 667358493432, г. Екатеринбург<br>Почта: <a href="mailto:tannyff@vk.com">tannyff@vk.com</a> · Телефон: <a href="tel:+79220220020">+7 922 022-00-20</a><br><a href="https://tannyff.github.io/ai-prompts-guide/oferta.html">Публичная оферта</a> · <a href="https://tannyff.github.io/ai-prompts-guide/privacy.html">Политика обработки персональных данных</a></footer>
 <script>
 const API='https://brviutjcldbmzpvmmzdv.supabase.co/functions/v1/';
 const box=document.getElementById('box');
@@ -41,7 +44,7 @@ let order=null;
 try{order=JSON.parse(localStorage.getItem('tannyff-order')||'null')}catch(e){}
 
 if(!order){
-  show('<h1>Почти готово</h1><p>Не нашла данные заказа в этом браузере. Так бывает, если оплата прошла на другом устройстве или в другом браузере.</p><p>Напиши мне в директ <a href="https://ig.me/m/tannyff_m">@tannyff_m</a> и укажи почту, с которой оплачивала. Пришлю доступ вручную.</p>');
+  show('<h1>Почти готово</h1><p>Не нашла данные заказа в этом браузере. Так бывает, если оплата прошла на другом устройстве или в другом браузере.</p><p>Если оплата прошла, ссылка на материалы уже ушла на почту, которую ты указывала при оплате (проверь «Спам»). Если письма нет, напиши на <a href="mailto:tannyff@vk.com">tannyff@vk.com</a> или в директ <a href="https://ig.me/m/tannyff_m">@tannyff_m</a>, пришлю доступ вручную.</p>');
 }else{
   let tries=0;
   (async function check(){
@@ -57,7 +60,7 @@ if(!order){
     }catch(e){}
     // Робокасса подтверждает оплату с задержкой, поэтому ждём до ~2 минут
     if(tries<40){setTimeout(check,3000)}
-    else show('<h1>Оплата ещё обрабатывается</h1><p>Банк пока не подтвердил платёж. Обнови страницу через пару минут.</p><a class="btn" href="spasibo.html">Проверить ещё раз</a><p class="muted" style="margin-top:20px">Если деньги списались, а доступа нет, напиши мне в директ <a href="https://ig.me/m/tannyff_m">@tannyff_m</a> с почтой, указанной при оплате.</p>');
+    else show('<h1>Оплата ещё обрабатывается</h1><p>Банк пока не подтвердил платёж. Обнови страницу через пару минут.</p><a class="btn" href="spasibo.html">Проверить ещё раз</a><p class="muted" style="margin-top:20px">Если деньги списались, а доступа нет, напиши на <a href="mailto:tannyff@vk.com">tannyff@vk.com</a> или в директ <a href="https://ig.me/m/tannyff_m">@tannyff_m</a> с почтой, указанной при оплате.</p>');
   })();
 }
 </script>

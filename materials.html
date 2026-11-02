@@ -80,7 +80,7 @@ function denied(){
     c.items.forEach(p=>{n++;html+='<article class="card"><b>'+n+'</b><pre>'+esc(p).replace(/\[[^\]]+\]/g,m=>'<mark>'+m+'</mark>')+'</pre><button class="copy">Скопировать</button></article>'});
     html+='</div></section>';
   });
-  html+='<footer>Татьяна, <a href="https://www.instagram.com/tannyff_m/">@tannyff_m</a>. Вопросы по материалам — в директ.</footer>';
+  html+='<footer>Татьяна, <a href="https://www.instagram.com/tannyff_m/">@tannyff_m</a>. Вопросы по материалам — в директ.<br>Самозанятая Мунарева Татьяна Александровна, ИНН 667358493432, г. Екатеринбург<br>Почта: <a href="mailto:tannyff@vk.com">tannyff@vk.com</a> · Телефон: <a href="tel:+79220220020">+7 922 022-00-20</a><br><a href="https://tannyff.github.io/ai-prompts-guide/oferta.html">Публичная оферта</a> · <a href="https://tannyff.github.io/ai-prompts-guide/privacy.html">Политика обработки персональных данных</a></footer>';
   app.innerHTML=html;
 })();
 
