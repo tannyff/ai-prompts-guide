@@ -92,6 +92,12 @@ footer a{color:var(--muted)}
 .buy-msg{min-height:1.4em;margin-top:10px;font-size:15px;color:var(--muted)}
 .buy-msg.err{color:#ff8f7a}
 .fine{color:var(--muted);font-size:13px;margin-top:12px}
+.payby{display:flex;gap:14px;align-items:center;margin-top:18px;padding-top:16px;border-top:1px solid var(--line)}
+.payby a{flex:none;display:block;line-height:0}
+.payby img{display:block;width:134px;height:auto}
+.payby p{color:var(--muted);font-size:13px;line-height:1.5;margin:0}
+@media (max-width:420px){.payby{flex-direction:column;align-items:flex-start;gap:10px}}
+.rk-foot{display:inline-block;margin-top:10px;line-height:0}.rk-foot img{width:96px;height:auto;opacity:.7}
 .agree{display:flex!important;gap:10px;align-items:flex-start;margin:14px 0 4px!important;font-size:13px!important;line-height:1.5;cursor:pointer}
 .agree input{width:18px;height:18px;flex:none;margin-top:1px;accent-color:var(--accent)}
 .agree a{color:var(--accent-hi)}
@@ -144,7 +150,11 @@ footer a{color:var(--muted)}
       <button class="pay" type="submit" id="payBtn">Купить за 990 ₽</button>
       <p class="buy-msg" id="buyMsg" role="status"></p>
     </form>
-    <p class="fine">Оплата через Робокассу: карта, СБП. Сразу после оплаты откроется страница с материалами, а на почту придёт письмо со ссылкой (действует 45 дней) и чек. Если файлы не придут или не откроются, верну деньги или пришлю заново, подробнее в <a href="oferta.html">оферте</a>.</p>
+    <div class="payby">
+      <a href="https://robokassa.com" target="_blank" rel="noopener" aria-label="Robokassa — сайт платёжного сервиса"><img src="robokassa-logo.svg" alt="Robokassa" width="134" height="20"></a>
+      <p>Платёж принимает сервис Робокасса: банковская карта или СБП. Данные карты вводятся на защищённой странице Робокассы, мне они не передаются. Чек придёт на почту, указанную выше.</p>
+    </div>
+    <p class="fine">Сразу после оплаты откроется страница с материалами, а на почту придёт письмо со ссылкой (действует 45 дней). Если файлы не придут или не откроются, верну деньги или пришлю заново, подробнее в <a href="oferta.html">оферте</a>.</p>
   </div>
 </section>
 
@@ -159,7 +169,7 @@ footer a{color:var(--muted)}
   <a class="pdf" href="20-promptov-dlya-kontenta.pdf" download>Скачать гайд в PDF</a>
 </section>
 
-<footer>Татьяна, <a href="https://www.instagram.com/tannyff_m/">@tannyff_m</a>. Сделано с ИИ, проверено человеком.<br>Самозанятая Мунарева Татьяна Александровна, ИНН 667358493432, г. Екатеринбург<br>Почта: <a href="mailto:tannyff@vk.com">tannyff@vk.com</a> · Телефон: <a href="tel:+79220220020">+7 922 022-00-20</a><br><a href="https://tannyff.github.io/ai-prompts-guide/oferta.html">Публичная оферта</a> · <a href="https://tannyff.github.io/ai-prompts-guide/privacy.html">Политика обработки персональных данных</a></footer>
+<footer>Татьяна, <a href="https://www.instagram.com/tannyff_m/">@tannyff_m</a>. Сделано с ИИ, проверено человеком.<br>Самозанятая Мунарева Татьяна Александровна, ИНН 667358493432, г. Екатеринбург<br>Почта: <a href="mailto:tannyff@vk.com">tannyff@vk.com</a> · Телефон: <a href="tel:+79220220020">+7 922 022-00-20</a><br><a href="https://tannyff.github.io/ai-prompts-guide/oferta.html">Публичная оферта</a> · <a href="https://tannyff.github.io/ai-prompts-guide/privacy.html">Политика обработки персональных данных</a><br><a class="rk-foot" href="https://robokassa.com" target="_blank" rel="noopener" aria-label="Оплата через Robokassa"><img src="robokassa-logo.svg" alt="Robokassa" width="96" height="14"></a></footer>
 </main>
 
 <script>
